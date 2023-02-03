@@ -74747,7 +74747,7 @@ A.amF.prototype={
 $1(a){var s,r=new A.XX($,new A.HG(A.a([],t.lC)),$,new A.XO(),!1),q=A.azG()
 r.ih$=q
 r.OE$=new A.W3(A.aN(t.Gf))
-q.ii$="https://corsproxy.github.io/http://140.238.247.103:5050"
+q.ii$="http://140.238.247.103:5050"
 s=q.b
 s===$&&A.b()
 s.n(0,"Access-Control-Allow-Origin","*")
