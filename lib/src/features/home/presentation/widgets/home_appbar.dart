@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../domain/enum/providers.dart';
+import '../../../../../providers/theme_provider.dart';
 import '../../providers/query_provider.dart';
 
 class HomeAppBar extends ConsumerStatefulWidget with PreferredSizeWidget {
@@ -33,28 +34,55 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = ref.watch(themeProvider);
+
     return AppBar(
       toolbarHeight: widget.preferredSize.height,
       title: Column(
         children: [
           const Text('iTorrent Search', style: TextStyle(fontSize: 20, letterSpacing: 1.2)),
           const SizedBox(height: 12),
-          TextField(
-            onSubmitted: onSearch,
-            controller: searchController,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide.none,
+          Row(
+            children: [
+              Expanded(
+                child: TextField(
+                  onSubmitted: onSearch,
+                  controller: searchController,
+                  style: const TextStyle(color: Colors.black),
+                  cursorColor: Theme.of(context).primaryColor,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: 'Search',
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    filled: true,
+                    fillColor: Colors.white,
+                    prefixIcon: IconButton(
+                      icon: const Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      ),
+                      onPressed: () => onSearch(null),
+                    ),
+                  ),
+                ),
               ),
-              hintText: 'Search',
-              filled: true,
-              fillColor: Colors.white,
-              prefixIcon: IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () => onSearch(null),
+              const SizedBox(width: 12),
+              IconButton(
+                icon: theme == Brightness.light
+                    ? const Icon(Icons.dark_mode)
+                    : const Icon(
+                        Icons.light_mode,
+                        color: Colors.white,
+                      ),
+                onPressed: () {
+                  ref.read(themeProvider.notifier).state =
+                      theme == Brightness.light ? Brightness.dark : Brightness.light;
+                },
               ),
-            ),
+            ],
           ),
         ],
       ),
@@ -62,6 +90,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
         labelColor: Colors.white,
         indicatorColor: Colors.white,
         unselectedLabelColor: Colors.white,
+        labelPadding: EdgeInsets.zero,
         tabs: SearchProvider.values.map((e) => Tab(text: e.name)).toList(),
       ),
     );

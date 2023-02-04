@@ -1,10 +1,10 @@
 enum SearchProvider {
   leetx('1337x'),
-  tpb('ThePirateBay'),
+  tpb('Pirate Bay'),
   // rarbg('RARBG'),
   yts('YTS'),
   kat('Kickass'),
-  lime('LimeTorrents');
+  lime('Lime');
 
   const SearchProvider(this.name);
   final String name;
