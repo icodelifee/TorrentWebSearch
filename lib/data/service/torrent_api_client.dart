@@ -26,4 +26,7 @@ abstract class TorrentAPIClient {
 
   @GET('/tpb')
   Future<List<Torrent>> getTPB(@Query('q') String query);
+
+  @GET('/tgx')
+  Future<List<Torrent>> getTGX(@Query('q') String query);
 }

@@ -50,3 +50,12 @@ final limeProvider = FutureProvider.autoDispose<Result>((ref) async {
   final results = await client.getLime(query);
   return results;
 });
+
+final tgxProvider = FutureProvider.autoDispose<Result>((ref) async {
+  final client = ref.watch(torrentClientProvider);
+  final query = ref.watch(queryProvider);
+  if (query.isEmpty) return [];
+
+  final results = await client.getTGX(query);
+  return results;
+});

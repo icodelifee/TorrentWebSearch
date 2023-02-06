@@ -9,7 +9,10 @@ part of 'torrent_api_client.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _TorrentAPIClient implements TorrentAPIClient {
-  _TorrentAPIClient(this._dio);
+  _TorrentAPIClient(
+    this._dio, {
+    this.baseUrl,
+  });
 
   final Dio _dio;
 
@@ -21,19 +24,22 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/1337x',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/1337x',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -43,19 +49,22 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/yts',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/yts',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -65,19 +74,22 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/rarbg',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/rarbg',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -87,19 +99,22 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/lime',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/lime',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -109,19 +124,22 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/kat',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/kat',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
@@ -131,25 +149,54 @@ class _TorrentAPIClient implements TorrentAPIClient {
     final queryParameters = <String, dynamic>{r'q': query};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/tpb',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!.map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>)).toList();
+            .compose(
+              _dio.options,
+              '/tpb',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<Torrent>> getTGX(query) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'q': query};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<Torrent>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/tgx',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => Torrent.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
-        !(requestOptions.responseType == ResponseType.bytes || requestOptions.responseType == ResponseType.stream)) {
+        !(requestOptions.responseType == ResponseType.bytes ||
+            requestOptions.responseType == ResponseType.stream)) {
       if (T == String) {
         requestOptions.responseType = ResponseType.plain;
       } else {

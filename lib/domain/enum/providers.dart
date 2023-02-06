@@ -4,7 +4,8 @@ enum SearchProvider {
   // rarbg('RARBG'),
   yts('YTS'),
   kat('Kickass'),
-  lime('Lime');
+  lime('Lime'),
+  tgx('TGX');
 
   const SearchProvider(this.name);
   final String name;

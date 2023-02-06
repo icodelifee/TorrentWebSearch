@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
             ResultPage(provider: ytsProvider),
             ResultPage(provider: katProvider),
             ResultPage(provider: limeProvider),
+            ResultPage(provider: tgxProvider),
           ],
         ),
       ),
