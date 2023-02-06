@@ -1,16 +1,48 @@
-# itorweb
+# Web Torrent Search
 
-A new Flutter project.
+A simple, fast and reliable torrent search engine built with Flutter and Golang to find and download torrents.
+This repository contains both the client and the server.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+##### Prerequisites
+- Golang version 1.18.
+- Flutter version ^3.0
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##### Setup
+
+Clone the repository:
+```
+git clone https://github.com/icodelifee/TorrentWebSearch.git
+```
+###### Server
+
+``` bash
+cd /server
+go get
+go run main.go
+```
+
+###### App
+
+1. Edit ```lib/config.dart``` and add the API url
+    ``` dart
+    ...
+    const apiURL = '<YOUR-SERVER-URL>';
+    ...
+    ```
+2. Install the Flutter dependencies:
+    `flutter pub get`
+2. Run the app
+    ``` sh
+    flutter run -d chrome
+    ```
+3. Build the app
+    ``` sh 
+    flutter build web
+    ```
+
+### Contributing
+We welcome contributions to this repository. If you have any suggestions or bug reports, feel free to open an issue or create a pull request.
