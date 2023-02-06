@@ -7,6 +7,7 @@ import 'package:itorweb/config.dart';
 
 import '../../../../../domain/enum/providers.dart';
 import '../../../../../providers/theme_provider.dart';
+import '../../../../utils/bubble_tab_indicator.dart';
 import '../../providers/query_provider.dart';
 
 class HomeAppBar extends ConsumerStatefulWidget with PreferredSizeWidget {
@@ -57,16 +58,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    IconButton(
-                      onPressed: () {
-                        html.window.open('https://github.com/icodelifee/TorrentWebSearch', 'repo');
-                      },
-                      icon: Image.asset(
-                        'assets/github.png',
-                        width: 30,
-                        color: Colors.white,
-                      ),
-                    ),
+                    const _GithubIconButton(),
                     const SizedBox(width: 12),
                     IconButton(
                       icon: isLight ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode, color: Colors.white),
@@ -80,43 +72,64 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
             ],
           ),
           const SizedBox(height: 12),
-          Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  onSubmitted: onSearch,
-                  controller: searchController,
-                  style: const TextStyle(color: Colors.black),
-                  cursorColor: Theme.of(context).primaryColor,
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      borderSide: BorderSide.none,
-                    ),
-                    hintText: 'Search',
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white,
-                    prefixIcon: IconButton(
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
-                      onPressed: () => onSearch(null),
-                    ),
-                  ),
-                ),
+          TextField(
+            onSubmitted: onSearch,
+            controller: searchController,
+            style: const TextStyle(color: Colors.black),
+            cursorColor: Theme.of(context).primaryColor,
+            decoration: InputDecoration(
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                borderSide: BorderSide.none,
               ),
-            ],
+              hintText: 'Search',
+              hintStyle: const TextStyle(color: Colors.grey),
+              filled: true,
+              fillColor: Colors.white,
+              prefixIcon: IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                onPressed: () => onSearch(null),
+              ),
+            ),
           ),
         ],
       ),
       bottom: TabBar(
-        labelColor: Colors.white,
+        isScrollable: true,
+        splashFactory: NoSplash.splashFactory,
+        labelColor: isLight ? primaryColor : Colors.white,
         indicatorColor: Colors.white,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        indicator: BubbleTabIndicator(
+          indicatorHeight: 25.0,
+          indicatorColor: isLight ? Colors.white : primaryColor,
+          indicatorRadius: 12,
+          insets: const EdgeInsets.symmetric(horizontal: 5.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        ),
         unselectedLabelColor: Colors.white,
-        labelPadding: EdgeInsets.zero,
         tabs: SearchProvider.values.map((e) => Tab(text: e.name)).toList(),
+      ),
+    );
+  }
+}
+
+class _GithubIconButton extends StatelessWidget {
+  const _GithubIconButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        html.window.open('https://github.com/icodelifee/TorrentWebSearch', 'repo');
+      },
+      icon: Image.asset(
+        'assets/github.png',
+        width: 30,
+        color: Colors.white,
       ),
     );
   }
