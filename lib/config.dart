@@ -1,7 +1,7 @@
 import 'package:diox/diox.dart';
 import 'package:flutter/material.dart';
 
-const apiURL = 'https://itorrent.angerycat.ga';
+const apiURL = '';
 const primaryColor = Color(0xFFFF4151);
 
 Dio get dio {

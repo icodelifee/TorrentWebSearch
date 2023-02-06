@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:itorweb/src/utils/show_snackbar.dart';
 
 import '../../../../../domain/entities/torrent/torrent.dart';
 
@@ -11,14 +12,11 @@ class TorrentTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         onTap: () async {
           await Clipboard.setData(ClipboardData(text: torrent.magnet!));
           if (context.mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Magnet copied to clipboard'),
-              ),
-            );
+            showSnackbar(context, 'Magnet copied to clipboard');
           }
         },
         title: Text(torrent.title ?? ''),

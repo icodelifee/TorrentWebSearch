@@ -35,6 +35,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     final theme = ref.watch(themeProvider);
+    final isLight = theme == Brightness.light;
 
     return AppBar(
       toolbarHeight: widget.preferredSize.height,
@@ -71,15 +72,9 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
               ),
               const SizedBox(width: 12),
               IconButton(
-                icon: theme == Brightness.light
-                    ? const Icon(Icons.dark_mode)
-                    : const Icon(
-                        Icons.light_mode,
-                        color: Colors.white,
-                      ),
+                icon: isLight ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode, color: Colors.white),
                 onPressed: () {
-                  ref.read(themeProvider.notifier).state =
-                      theme == Brightness.light ? Brightness.dark : Brightness.light;
+                  ref.read(themeProvider.notifier).state = isLight ? Brightness.dark : Brightness.light;
                 },
               ),
             ],
