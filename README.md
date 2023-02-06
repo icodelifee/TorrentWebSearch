@@ -11,38 +11,30 @@ This repository contains both the client and the server.
 - Golang version 1.18.
 - Flutter version ^3.0
 
-##### Setup
+## Setup
+1. Clone the repository: `https://github.com/icodelifee/TorrentWebSearch.git`
 
-Clone the repository:
-```
-git clone https://github.com/icodelifee/TorrentWebSearch.git
-```
-###### Server
+#### Server Setup
+1. Navigate to the Go server: `cd server/`
+2. Install the Go dependencies: `go get`
+3. Run the Go server: `go run main.go`
 
-``` bash
-cd /server
-go get
-go run main.go
-```
-
-###### App
-
-1. Edit ```lib/config.dart``` and add the API url
+#### Client Setup
+1. Install the Flutter dependencies: `flutter pub get`
+2. Edit ```lib/config.dart``` and add the API url
     ``` dart
     ...
     const apiURL = '<YOUR-SERVER-URL>';
     ...
     ```
-2. Install the Flutter dependencies:
-    `flutter pub get`
-2. Run the app
-    ``` sh
-    flutter run -d chrome
-    ```
-3. Build the app
-    ``` sh 
-    flutter build web
-    ```
+    
+3. Run the Flutter app: `flutter run`
 
-### Contributing
+
+## Usage
+1. Open the Flutter app on your browser
+2. Enter a search query in the search bar
+3. Browse through the results and click on a torrent to download
+
+## Contributing
 We welcome contributions to this repository. If you have any suggestions or bug reports, feel free to open an issue or create a pull request.
