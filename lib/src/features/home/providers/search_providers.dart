@@ -6,7 +6,7 @@ import '../../../../providers/torrent_client_provider.dart';
 
 typedef Result = List<Torrent>;
 
-final leetxProvider = FutureProvider.autoDispose<Result>((ref) async {
+final leetxProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
@@ -15,7 +15,7 @@ final leetxProvider = FutureProvider.autoDispose<Result>((ref) async {
   return results;
 });
 
-final tpbProvider = FutureProvider.autoDispose<Result>((ref) async {
+final tpbProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
@@ -24,7 +24,7 @@ final tpbProvider = FutureProvider.autoDispose<Result>((ref) async {
   return results;
 });
 
-final ytsProvider = FutureProvider.autoDispose<Result>((ref) async {
+final ytsProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
@@ -33,7 +33,7 @@ final ytsProvider = FutureProvider.autoDispose<Result>((ref) async {
   return results;
 });
 
-final katProvider = FutureProvider.autoDispose<Result>((ref) async {
+final katProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
@@ -42,7 +42,7 @@ final katProvider = FutureProvider.autoDispose<Result>((ref) async {
   return results;
 });
 
-final limeProvider = FutureProvider.autoDispose<Result>((ref) async {
+final limeProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
@@ -51,11 +51,20 @@ final limeProvider = FutureProvider.autoDispose<Result>((ref) async {
   return results;
 });
 
-final tgxProvider = FutureProvider.autoDispose<Result>((ref) async {
+final tgxProvider = FutureProvider<Result>((ref) async {
   final client = ref.watch(torrentClientProvider);
   final query = ref.watch(queryProvider);
   if (query.isEmpty) return [];
 
   final results = await client.getTGX(query);
+  return results;
+});
+
+final rarbgProvider = FutureProvider<Result>((ref) async {
+  final client = ref.watch(torrentClientProvider);
+  final query = ref.watch(queryProvider);
+  if (query.isEmpty) return [];
+
+  final results = await client.getRarbg(query);
   return results;
 });

@@ -7,7 +7,7 @@ import '../../providers/search_providers.dart';
 
 class ResultPage extends ConsumerWidget {
   const ResultPage({super.key, required this.provider});
-  final AutoDisposeFutureProvider<Result> provider;
+  final FutureProvider<Result> provider;
 
   @override
   Widget build(BuildContext context, ref) {
@@ -31,9 +31,26 @@ class ResultPage extends ConsumerWidget {
       error: (error, stack) {
         debugPrint(error.toString());
         return Center(
-          child: InkWell(
-            onTap: () => showSnackbar(context, error.toString()),
-            child: const Text('Error'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              InkWell(
+                onTap: () => showSnackbar(context, error.toString()),
+                child: const Text('Error'),
+              ),
+              const SizedBox(height: 8),
+              ElevatedButton(
+                onPressed: () => ref.refresh(provider),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text('Search again'),
+                    SizedBox(width: 8),
+                    Icon(Icons.refresh),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
