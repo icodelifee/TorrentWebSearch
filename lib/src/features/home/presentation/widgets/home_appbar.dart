@@ -1,3 +1,6 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:itorweb/config.dart';
@@ -42,7 +45,35 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
       toolbarHeight: widget.preferredSize.height,
       title: Column(
         children: [
-          const Text(appName, style: TextStyle(fontSize: 20, letterSpacing: 1.2)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const SizedBox(),
+              const Text(appName, style: TextStyle(fontSize: 20, letterSpacing: 1.2)),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      html.window.open('https://github.com/icodelifee/TorrentWebSearch', 'repo');
+                    },
+                    icon: Image.asset(
+                      'assets/github.png',
+                      width: 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    icon: isLight ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode, color: Colors.white),
+                    onPressed: () {
+                      ref.read(themeProvider.notifier).state = isLight ? Brightness.dark : Brightness.light;
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
           const SizedBox(height: 12),
           Row(
             children: [
@@ -70,13 +101,6 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(width: 12),
-              IconButton(
-                icon: isLight ? const Icon(Icons.dark_mode) : const Icon(Icons.light_mode, color: Colors.white),
-                onPressed: () {
-                  ref.read(themeProvider.notifier).state = isLight ? Brightness.dark : Brightness.light;
-                },
               ),
             ],
           ),
