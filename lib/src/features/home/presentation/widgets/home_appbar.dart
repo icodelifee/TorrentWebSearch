@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:itorweb/config.dart';
 
 import '../../../../../domain/enum/providers.dart';
 import '../../../../../providers/theme_provider.dart';
@@ -41,7 +42,7 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
       toolbarHeight: widget.preferredSize.height,
       title: Column(
         children: [
-          const Text('iTorrent Search', style: TextStyle(fontSize: 20, letterSpacing: 1.2)),
+          const Text(appName, style: TextStyle(fontSize: 20, letterSpacing: 1.2)),
           const SizedBox(height: 12),
           Row(
             children: [

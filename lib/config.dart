@@ -2,6 +2,8 @@ import 'package:diox/diox.dart';
 import 'package:flutter/material.dart';
 
 const apiURL = '';
+const appName = 'WebTorrentSearch';
+
 const primaryColor = Color(0xFFFF4151);
 
 Dio get dio {

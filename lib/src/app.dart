@@ -11,7 +11,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     final theme = ref.watch(themeProvider);
     return MaterialApp(
-      title: 'iTorrent Search',
+      title: appName,
       theme: ThemeData(
         brightness: theme,
         primaryColor: primaryColor,
