@@ -4,7 +4,6 @@ import (
 	"icodelife.com/itorrent-gofiber/routes/yts"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/basicauth"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	log "github.com/sirupsen/logrus"
 	_337x "icodelife.com/itorrent-gofiber/routes/1337x"
@@ -33,11 +32,6 @@ func main() {
 
 	app := fiber.New()
 
-	app.Use(basicauth.New(basicauth.Config{
-		Users: map[string]string{
-			"itorrent": "itorrent_123",
-		},
-	}))
 	app.Use(cors.New(
 		cors.Config{
 			AllowOrigins:     "*",
@@ -56,5 +50,4 @@ func main() {
 	app.Get("/tpb", tpb.GetTPB)
 
 	_ = app.Listen(":5050")
-
 }
