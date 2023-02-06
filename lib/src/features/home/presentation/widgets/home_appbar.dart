@@ -97,8 +97,23 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
           ),
         ],
       ),
-      bottom: TabBar(
-        isScrollable: true,
+      bottom: _TabBar(isLight: isLight),
+    );
+  }
+}
+
+class _TabBar extends StatelessWidget with PreferredSizeWidget {
+  const _TabBar({
+    required this.isLight,
+  });
+
+  final bool isLight;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) => TabBar(
+        isScrollable: constraints.maxWidth < 700,
         splashFactory: NoSplash.splashFactory,
         labelColor: isLight ? primaryColor : Colors.white,
         indicatorColor: Colors.white,
@@ -115,6 +130,9 @@ class _HomeAppBarState extends ConsumerState<HomeAppBar> {
       ),
     );
   }
+
+  @override
+  Size get preferredSize => Size.infinite;
 }
 
 class _GithubIconButton extends StatelessWidget {
