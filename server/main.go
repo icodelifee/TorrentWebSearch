@@ -1,6 +1,7 @@
 package main
 
 import (
+	"icodelife.com/itorrent-gofiber/routes/tgx"
 	"icodelife.com/itorrent-gofiber/routes/yts"
 
 	"github.com/gofiber/fiber/v2"
@@ -48,6 +49,7 @@ func main() {
 	app.Get("/rarbg", rarbg.GetRARBG)
 	app.Get("/yts", yts.SearchYts)
 	app.Get("/tpb", tpb.GetTPB)
+	app.Get("/tgx", tgx.GetTGX)
 
 	_ = app.Listen(":5050")
 }
