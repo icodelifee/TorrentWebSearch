@@ -1,7 +1,7 @@
 enum SearchProvider {
   leetx('1337x'),
   tpb('Pirate Bay'),
-  // rarbg('RARBG'),
+  rarbg('RARBG'),
   yts('YTS'),
   kat('Kickass'),
   lime('Lime'),

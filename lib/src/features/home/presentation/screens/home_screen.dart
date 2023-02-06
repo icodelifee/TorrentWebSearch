@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
           children: [
             ResultPage(provider: leetxProvider),
             ResultPage(provider: tpbProvider),
+            ResultPage(provider: rarbgProvider),
             ResultPage(provider: ytsProvider),
             ResultPage(provider: katProvider),
             ResultPage(provider: limeProvider),
